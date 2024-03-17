@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import marked from 'marked'; // Importing the marked library for Markdown rendering
-import './styles.css'; // Importing the CSS file for styling
+import * as marked from 'marked'; // Importing all named exports from 'marked' library
+import './App.css';
 
 function App() {
   // Default Markdown content
@@ -22,7 +22,8 @@ code block
 
   // Effect to update the preview when Markdown content changes
   useEffect(() => {
-    document.getElementById('preview').innerHTML = marked(markdown);
+    // Using the parse method from 'marked' library to convert Markdown to HTML
+    document.getElementById('preview').innerHTML = marked.parse(markdown);
   }, [markdown]);
 
   // Function to handle textarea changes
@@ -41,3 +42,4 @@ code block
 }
 
 export default App;
+
